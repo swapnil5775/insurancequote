@@ -119,9 +119,9 @@ export default function TermsOfServicePage() {
               <br />
               1000 N Ashley Drive, Tampa, FL 33602
               <br />
-              Phone: 813-555-7890
+              Phone: 656-217-7270
               <br />
-              Email: legal@getflquote.com
+              Email: info@getflquote.com
             </p>
           </div>
         </div>
