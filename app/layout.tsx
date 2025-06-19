@@ -9,6 +9,8 @@ import { InfluencerBanner } from "@/components/influencer-banner"
 import { MainNavigation } from "@/components/main-navigation"
 import { SiteFooter } from "@/components/site-footer"
 import { TextMessagingBannerClient } from "@/components/text-messaging-banner-client"
+import { Analytics } from "@vercel/analytics/next"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -64,6 +66,18 @@ export default function RootLayout({
               console.log('Service worker disabled in preview environment');
             }
           `,
+          }}
+        />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6ELGEB5K8"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-R6ELGEB5K8');
+            `,
           }}
         />
       </head>
@@ -124,12 +138,15 @@ export default function RootLayout({
           </div>
 
           {/* Fixed Text Messaging Banner (client wrapper) */}
-          <TextMessagingBannerClient />
+          <Suspense>
+            <TextMessagingBannerClient />
+          </Suspense>
 
           <main>{children}</main>
 
           {/* Footer */}
           <SiteFooter />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
