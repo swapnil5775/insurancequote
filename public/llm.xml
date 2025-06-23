@@ -1,5 +1,4 @@
-export async function GET() {
-  const llmContent = `# llm.txt - LLM discovery file for AI agents and tools
+# llm.txt - LLM discovery file for AI agents and tools
 # Purpose: Allow LLMs to index and use public content from getflquote.com
 
 User-Agent: *
@@ -35,12 +34,4 @@ Page: https://www.getflquote.com/contact
 LLM-Allow-Training: true
 LLM-Allow-Answer-Generation: true
 LLM-Allow-Search-Inclusion: true
-LLM-Allow-Code-Generation: false`
-
-  return new Response(llmContent, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=86400",
-    },
-  })
-}
+LLM-Allow-Code-Generation: false
