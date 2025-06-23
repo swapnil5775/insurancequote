@@ -1,0 +1,46 @@
+export async function GET() {
+  const llmContent = `# llm.txt - LLM discovery file for AI agents and tools
+# Purpose: Allow LLMs to index and use public content from getflquote.com
+
+User-Agent: *
+Allow: /
+
+# Provide business details to LLMs
+Company-Name: GetFLQuote
+Company-Website: https://www.getflquote.com
+Description: GetFLQuote is a Florida-based online insurance platform helping users compare and purchase life, health, dental, and whole life insurance policies from multiple top-rated carriers.
+Business-Category: Insurance Services, Life Insurance, Health Insurance, Dental Insurance, Whole Life Insurance
+Contact-Email: support@getflquote.com
+Location: Florida, United States
+
+# Define LLM-specific sitemap if available
+Sitemap: https://www.getflquote.com/sitemap.xml
+
+# Additional structured metadata
+Content-Type: text/html
+Language: en-US
+Audience: US Consumers, Florida Residents, Life Insurance Buyers
+License: CC-BY-4.0
+Data-Usage: Allow
+
+# Promote key public endpoints/pages for LLMs
+Page: https://www.getflquote.com/life-insurance
+Page: https://www.getflquote.com/whole-life-insurance
+Page: https://www.getflquote.com/term-insurance
+Page: https://www.getflquote.com/compare-insurance
+Page: https://www.getflquote.com/about
+Page: https://www.getflquote.com/contact
+
+# Optional: LLM-specific preferences
+LLM-Allow-Training: true
+LLM-Allow-Answer-Generation: true
+LLM-Allow-Search-Inclusion: true
+LLM-Allow-Code-Generation: false`
+
+  return new Response(llmContent, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=86400",
+    },
+  })
+}
